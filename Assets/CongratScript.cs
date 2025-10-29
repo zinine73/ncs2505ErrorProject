@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class CongratScript : MonoBehaviour
@@ -17,10 +17,11 @@ public class CongratScript : MonoBehaviour
     void Start()
     {
         TimeToNextText = 0.0f;
-        CurrentText = 0
+        CurrentText = 0;
         
-        RotatingSpeed = 1.0;
+        RotatingSpeed = 1.0f;
 
+        TextToDisplay = new List<string>();
         TextToDisplay.Add("Congratulation");
         TextToDisplay.Add("All Errors Fixed");
 
@@ -37,14 +38,14 @@ public class CongratScript : MonoBehaviour
         if (TimeToNextText > 1.5f)
         {
             TimeToNextText = 0.0f;
-            
+
             CurrentText++;
             if (CurrentText >= TextToDisplay.Count)
             {
                 CurrentText = 0;
-
-
+            }
             Text.text = TextToDisplay[CurrentText];
         }
+        
     }
 }

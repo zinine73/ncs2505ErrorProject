@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class CongratScript : MonoBehaviour
 {
-    public TextMesh Text;
+    public TextMeshProUGUI Text;
     public ParticleSystem SparksParticles;
     
     private List<string> TextToDisplay;
@@ -19,7 +19,7 @@ public class CongratScript : MonoBehaviour
         TimeToNextText = 0.0f;
         CurrentText = 0;
         
-        RotatingSpeed = 1.0f;
+        RotatingSpeed = 30.0f;
 
         TextToDisplay = new List<string>();
         TextToDisplay.Add("Congratulation");
@@ -46,6 +46,8 @@ public class CongratScript : MonoBehaviour
             }
             Text.text = TextToDisplay[CurrentText];
         }
-        
+        //Text.transform.rotation = Quaternion.Euler(0, 0, RotatingSpeed);
+        Text.transform.Rotate(0, 0, RotatingSpeed * Time.deltaTime);
+        SparksParticles.transform.Rotate(0, 0, RotatingSpeed * Time.deltaTime);
     }
 }
